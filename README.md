@@ -15,6 +15,7 @@ Convert images to ASCII art in the terminal.
 - converts PNG, JPG, WebP, and GIF to ASCII art
 - auto-detects terminal size: no flags needed for a full-screen render
 - three character ramps: classic, blocks, dense
+- color output with `--color`: each character is colored with the original pixel color
 - manual width and height override
 - invert mode for light-on-dark terminals
 - write output to file with `--output`
@@ -46,10 +47,11 @@ pnpm build
 ## Quick Start
 
 ```bash
-ascii images/cat1.jpg
+ascii images/cat1.jpg           # auto terminal size, black and white
+ascii images/cat1.jpg --color   # same but with original image colors
 ```
 
-No flags needed. Auto-detects your terminal size and fills it. You can also use the full command name `asciiclaw`.
+No flags needed for a full-screen render. Use `--color` to render with the original pixel colors from the image. You can also use the full command name `asciiclaw`.
 
 ## Demo
 
@@ -107,6 +109,7 @@ Run `ascii --help` at any time to see the full option list in your terminal.
 | `--height <number>` | `-H` | derived from aspect ratio | Output height in characters. Each character = one pixel row. |
 | `--ramp <name>` | `-r` | `classic` | Character ramp: `classic`, `blocks`, or `dense`. Controls which characters represent brightness levels. |
 | `--invert` | `-i` | off | Invert brightness mapping. Dark pixels become light characters and vice versa. Use for images with dark backgrounds. |
+| `--color` | `-c` | off | Enable color output. Each character is colored with the original RGB value of the corresponding pixel. |
 | `--output <file>` | `-o` | stdout | Write ASCII output to a file instead of printing to the terminal. |
 | `--version` | `-V` | | Print the version number and exit. |
 | `--help` | `-h` | | Show all available options and exit. |

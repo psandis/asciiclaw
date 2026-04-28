@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import sharp from 'sharp';
 import { RAMPS, type RampName } from './ramps.js';
 
@@ -8,6 +9,7 @@ export interface ConvertOptions {
   maxHeight?: number;
   ramp: RampName;
   invert: boolean;
+  color: boolean;
 }
 
 export async function convertToAscii(imagePath: string, options: ConvertOptions): Promise<string> {
@@ -43,21 +45,27 @@ export async function convertToAscii(imagePath: string, options: ConvertOptions)
     height = Math.min(Math.round((width * imgH) / imgW / 2), maxH);
   }
 
-  const { data } = await image
-    .resize(width, height, { fit: 'fill' })
-    .grayscale()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
+  const channels = options.color ? 3 : 1;
+  const pipeline = options.color
+    ? image.resize(width, height, { fit: 'fill' }).raw()
+    : image.resize(width, height, { fit: 'fill' }).grayscale().raw();
+
+  const { data: pixels } = await pipeline.toBuffer({ resolveWithObject: true });
 
   const lines: string[] = [];
 
   for (let y = 0; y < height; y++) {
     let line = '';
     for (let x = 0; x < width; x++) {
-      const brightness = data[y * width + x] / 255;
+      const i = (y * width + x) * channels;
+      const r = pixels[i];
+      const g = options.color ? pixels[i + 1] : r;
+      const b = options.color ? pixels[i + 2] : r;
+      const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
       const mapped = invert ? 1 - brightness : brightness;
       const index = Math.floor(mapped * (chars.length - 1));
-      line += chars[index];
+      const char = chars[index];
+      line += options.color ? chalk.rgb(r, g, b)(char) : char;
     }
     lines.push(line);
   }

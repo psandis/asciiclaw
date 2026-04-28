@@ -17,8 +17,9 @@ program
   .option('-H, --height <number>', 'output height in characters')
   .option('-r, --ramp <name>', 'character ramp: classic | blocks | dense', DEFAULT_RAMP)
   .option('-i, --invert', 'invert brightness mapping', false)
+  .option('-c, --color', 'enable color output using original image colors', false)
   .option('-o, --output <file>', 'write output to file instead of stdout')
-  .action(async (imagePath: string, opts: { width?: string; height?: string; ramp: string; invert: boolean; output?: string }) => {
+  .action(async (imagePath: string, opts: { width?: string; height?: string; ramp: string; invert: boolean; color: boolean; output?: string }) => {
     const explicitWidth = opts.width !== undefined ? parseInt(opts.width, 10) : undefined;
     const explicitHeight = opts.height !== undefined ? parseInt(opts.height, 10) : undefined;
 
@@ -45,6 +46,7 @@ program
         maxHeight: terminalRows,
         ramp: opts.ramp as RampName,
         invert: opts.invert,
+        color: opts.color,
       });
 
       if (opts.output) {
