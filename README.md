@@ -28,6 +28,8 @@ For development: pnpm
 
 ## Install
 
+[asciiclaw on npm](https://www.npmjs.com/package/asciiclaw)
+
 ```bash
 npm install -g asciiclaw
 ```
