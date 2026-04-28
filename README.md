@@ -190,13 +190,13 @@ pnpm test
 
 ## Related
 
-- 🦀 [Feedclaw](https://github.com/psandis/feedclaw) — RSS/Atom feed reader and AI digest builder
-- 🦀 [Dustclaw](https://github.com/psandis/dustclaw) — Find out what is eating your disk space
-- 🦀 [Driftclaw](https://github.com/psandis/driftclaw) — Deployment drift detection across environments
-- 🦀 [Dietclaw](https://github.com/psandis/dietclaw) — Codebase health monitor
-- 🦀 [Mymailclaw](https://github.com/psandis/mymailclaw) — Email scanner, categorizer, and cleaner
-- 🦀 [Wirewatch](https://github.com/psandis/wirewatch) — Network traffic monitor with AI anomaly detection
-- 🦀 [OpenClaw](https://github.com/openclaw/openclaw) — The open source AI assistant
+- 🦀 [Feedclaw](https://github.com/psandis/feedclaw): RSS/Atom feed reader and AI digest builder
+- 🦀 [Dustclaw](https://github.com/psandis/dustclaw): Find out what is eating your disk space
+- 🦀 [Driftclaw](https://github.com/psandis/driftclaw): Deployment drift detection across environments
+- 🦀 [Dietclaw](https://github.com/psandis/dietclaw): Codebase health monitor
+- 🦀 [Mymailclaw](https://github.com/psandis/mymailclaw): Email scanner, categorizer, and cleaner
+- 🦀 [Wirewatch](https://github.com/psandis/wirewatch): Network traffic monitor with AI anomaly detection
+- 🦀 [OpenClaw](https://github.com/openclaw/openclaw): The open source AI assistant
 
 ## License
 
